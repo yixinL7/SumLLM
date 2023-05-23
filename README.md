@@ -1,5 +1,5 @@
 # SumLLM
-This repo contains the training and evaluation scripts, experiment data, model outputs for our paper: On Learning to Summarize with Large Language Models as References.
+This repo contains the training and evaluation scripts, experiment data, model outputs for our paper: "On Learning to Summarize with Large Language Models as References".
 
 This repo is intended and licensed for research use only. 
 The data and model outputs are licensed under CC BY-NC 4.0 (allowing only non-commercial use).
@@ -185,7 +185,8 @@ Here is the description of the different data sets:
 - `./gpt_brio_gptscore`: data used for the contrastive learning with GPT-3 and GPTScore
 - `./chatgpt_all`: data used for the MLE training with ChatGPT, which is used for the evaluation
 - `./brio_chatgpt`: data used for the contrastive learning with ChatGPT and GPTRank
-- `./gpt4`: data used for the MLE training with GPT-4, which is used for the evaluation
+- `./gpt4`: data used for the MLE training with GPT-4
+- `./brio_gpt4`: data used for the contrastive learning with GPT-4 and GPTRank
 
 ## Model Outputs
 
