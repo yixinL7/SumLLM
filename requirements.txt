@@ -1,0 +1,8 @@
+datasets==2.4.0
+rouge-score==0.1.2
+sentencepiece==0.1.97
+tensorboard==2.10.0
+torch==1.12.1
+transformers==4.21.2
+openai==0.27.2
+

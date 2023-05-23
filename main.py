@@ -14,7 +14,7 @@ import torch.distributed as dist
 import torch.multiprocessing as mp
 from functools import partial
 from model import BRIO, label_smoothing_loss, AdaptiveRankingLoss
-from config import cnndm_setting, xsum_setting
+from config import CONFIGS
 import math
 import json
 import datetime
@@ -201,10 +201,8 @@ def test(dataloader, gen_dataloader, model, args, tok, gpuid, do_sample=False):
 
 
 def run(rank, args):
-    if args.config == "cnndm":
-        cnndm_setting(args)
-    elif args.config == "xsum":
-        xsum_setting(args)
+    if args.config is not None:
+        CONFIGS[args.config](args)
     else:
         base_setting(args)
     # task initialization
@@ -400,7 +398,7 @@ if __name__ ==  "__main__":
     parser.add_argument("-l", "--log", action="store_true", help="logging")
     parser.add_argument("-p", "--port", type=int, default=12355, help="port")
     parser.add_argument("--model_pt", default=None, type=str, help="model path")
-    parser.add_argument("--config", default="", type=str, help="config path")
+    parser.add_argument("--config", default=None, type=str, help="config path")
     args = parser.parse_args()
     if args.cuda is False:
         main(args)

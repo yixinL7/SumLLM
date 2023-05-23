@@ -1,4 +1,5 @@
 import math
+import argparse
 
 
 def chatgpt_warmup(args):
@@ -208,7 +209,7 @@ def gpt4_mle(args):
     args.seq_avg = getattr(args, "seq_avg", False) # whether to use sequence-level average
 
 
-def chatgpt_brio(args):
+def gpt4_brio(args):
     args.batch_size = getattr(args, 'batch_size', 2) # batch size on one gpu, one step
     args.epoch = getattr(args, 'epoch', 10) 
     args.report_freq = getattr(args, "report_freq", 10) # report frequency
@@ -252,5 +253,5 @@ CONFIGS = {
     "chatgpt_mle": chatgpt_mle,
     "chatgpt_brio": chatgpt_brio,
     "gpt4_mle": gpt4_mle,
-    "chatgpt_brio": chatgpt_brio,
+    "gpt4_brio": gpt4_brio,
 }

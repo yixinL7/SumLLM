@@ -14,6 +14,7 @@ import torch.distributed as dist
 import torch.multiprocessing as mp
 from functools import partial
 from model import label_smoothing_loss
+from config import CONFIGS
 
 
 def base_setting(args):
@@ -152,7 +153,10 @@ def test(dataloader, gen_dataloader, model, args, tok, gpuid, do_sample=False):
 
 
 def run(rank, args):
-    base_setting(args)
+    if args.config is not None:
+        CONFIGS[args.config](args)
+    else:
+        base_setting(args)
     # task initialization
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
@@ -187,9 +191,7 @@ def run(rank, args):
         val_dataloader = DataLoader(val_set, batch_size=2*args.batch_size, shuffle=False, num_workers=4, collate_fn=collate_fn_val)
         val_gen_dataloader = DataLoader(val_set, batch_size=2*args.batch_size, shuffle=False, num_workers=4, collate_fn=collate_fn_val)
     # build models
-    model_path = args.pretrained if args.pretrained is not None else args.model_type
-    if len(args.model_pt) > 0:
-        model_path = args.model_pt
+    model_path = args.model_pt if args.model_pt is not None else args.model_type
     model = BartForConditionalGeneration.from_pretrained(model_path)
     model.config.decoder_start_token_id = tok.bos_token_id
     model.config.force_bos_token_to_be_generated = False
@@ -329,8 +331,8 @@ if __name__ ==  "__main__":
     parser.add_argument("--gpuid", nargs='+', type=int, default=0, help="gpu ids")
     parser.add_argument("-l", "--log", action="store_true", help="logging")
     parser.add_argument("-p", "--port", type=int, default=12355, help="port")
-    parser.add_argument("--model_pt", default="", type=str, help="model path")
-    parser.add_argument("--config", default="", type=str, help="config path")
+    parser.add_argument("--model_pt", default=None, type=str, help="model path")
+    parser.add_argument("--config", default=None, type=str, help="config path")
     args = parser.parse_args()
     if args.cuda is False:
         main(args)

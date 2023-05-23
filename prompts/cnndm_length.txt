@@ -1,0 +1,5 @@
+Article: {{Article}}
+
+Summarize the above article in three sentences.
+
+Summary: {{Summary}}

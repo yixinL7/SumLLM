@@ -1,0 +1,16 @@
+You will be given a news article along with two summaries.
+Please compare the quality of these two summaries and pick the one that is better (there can be a tie).
+First you will give an explanation of your decision then you will provide your decision in the format of 1 or 2 or tie.
+
+Response format:
+Explanation: "Your explanation here".
+Decision: 1 or 2 or tie.
+
+Here's the article:
+{{Article}}
+
+Summary 1:
+{{Summary 1}}
+
+Summary 2:
+{{Summary 2}}

@@ -1,0 +1,1 @@
+python test.py --gpuid 2 --src_dir /home/lily/yl2454/acu/llmsumm/rose.source --tgt_dir ./outputs/brio.gpt3d3.txt --ref_dir /home/lily/yl2454/acu/llmsumm/test_examples/gpt3d3.txt --model_dir /home/lily/yl2454/acu/llmsumm/cache/23-04-02-30/model_ranking --length_penalty 0.5 --num_beams 64 --batch_size 2
