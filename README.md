@@ -1,5 +1,5 @@
 # SumLLM
-This repo contains the training and evaluation scripts, experiment data, model outputs for our paper: "On Learning to Summarize with Large Language Models as References".
+This repo contains the training and evaluation scripts, experiment data, model outputs for our paper: "[On Learning to Summarize with Large Language Models as References](https://arxiv.org/abs/2305.14239)".
 
 This repo is intended and licensed for research use only. 
 The data and model outputs are licensed under CC BY-NC 4.0 (allowing only non-commercial use).
